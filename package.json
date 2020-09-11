@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/James-Muralles/node-practice#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "@types/request": "^2.48.5",
+    "express": "^4.17.1",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

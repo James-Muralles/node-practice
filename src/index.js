@@ -10,13 +10,26 @@
 import express from 'express';//es6 code
 const app = express();
 const square = require('./square');
+var request = require('request');
 
 app.get('/hello', function(req, res){
 res.send("HELLO!");
 });
 
-app.get('/getWeathertoronto', (req, res) =>{
-    res.send("HELLO!");
+
+app.get('/weather', (req, res) =>{
+    request(
+        'http://api.weatherstack.com/current?access_key=e530269f98c7c7e050d1dda41a69d6dd&query=78210', function(error, response, body){
+            if (!error && response.statusCode == 200){
+                let parsedBody = JSON.parse(body);
+                let temp_c = parsedBody["current"]["temperature"];
+                let place = parsedBody["location"]["name"]
+                // res.send({place})
+                res.send({temp_c})
+            }
+        }
+    )
+   
 });
 
 
