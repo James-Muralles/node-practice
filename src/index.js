@@ -15,14 +15,19 @@ app.get('/hello', function(req, res){
 res.send("HELLO!");
 });
 
-app.all('/secret', function(req, res, next) {
+app.get('/getWeathertoronto', (req, res) =>{
+    res.send("HELLO!");
+});
+
+
+app.all('/secret', (req, res, next) => {
     res.send("SECRET")
     console.log('Accessing the secret section ...');
     next(); // pass control to the next handler
   });
 
-app.listen(3000, function(){
-    console.log("listening in on port 3000!")
+app.listen(5000, function(){
+    console.log("listening in on port 5000!")
     console.log("the area of the square is " + square.area(4));
 });
 
